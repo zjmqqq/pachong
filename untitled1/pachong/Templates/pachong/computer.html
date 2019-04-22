@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<ul >
+    {% for i in ls.object_list %}
+    <li >
+    <div >
+        <div ><img src="{{ i.imgsrc }}" alt=""></div>
+        <div >
+            <ul  style="border: none">
+                <li >描述:{{ i.title }}</li>
+                <li >价格:{{ i.prices }}</li>
+                <li >店家:{{ i.merchant }}</li>
+            </ul>
+        </div>
+    </div>
+    </li>
+        {% empty %}
+        wu
+    {% endfor %}
+</ul>
+<footer >
+<ul id="choese" style="position: relative; left: 40%; z-index: 99" >
+<li style="display: inline-block; margin-left: 5px"><a href="{{ ls.number|add:-1 }}">上一页</a></li>
+    {% for i in ls.paginator.page_range %}
+        <li  style="display: inline-block; margin-left: 5px"><a href="{{ i }}">{{ i }}</a></li>
+        {% empty %}
+        kong
+    {% endfor %}
+<li style="display: inline-block; margin-left: 5px"><a href="{{ ls.number|add:1 }}">下一页</a></li>
+</ul>
+</footer>
+</body>
+</html>
